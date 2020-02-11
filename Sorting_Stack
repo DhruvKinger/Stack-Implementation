@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#include <iostream>
+
+using namespace std;
+stack<int> sortStack(stack<int> &s)
+   {
+       stack<int> tmpstack;
+          while(!s.empty())
+    {
+        int x=s.top(); // pop out the first element 
+        s.pop();
+        // while temporary stack is not empty and top 
+        // of stack is greater than x 
+        while(!tmpstack.empty() && tmpstack.top()>x)
+        {
+            s.push(tmpstack.top());
+            tmpstack.pop();
+        }
+        
+        tmpstack.push(x);
+    }
+    return tmpstack;
+   }
+   
+int main()
+{
+    
+    std::stack<int> s ;
+    s.push(34);
+    s.push(2);
+    s.push(30);
+    s.push(98);
+    s.push(92);
+    s.push(23);
+    
+    stack<int> tmpStack = sortStack(s); 
+    
+    cout<<"After sorting we have largest element at top\n ";
+    
+  while (!tmpStack.empty()) 
+    { 
+        cout <<tmpStack.top()<< " "; 
+        tmpStack.pop();
+        
+    }
+    
+     return 0;
+}
