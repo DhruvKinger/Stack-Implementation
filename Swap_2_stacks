@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+int main()
+{
+    std::stack<int> s ;
+    stack<int> s1;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(11);
+    s.push(0);
+    
+    s1.push(9);
+    s1.push(8);
+    s1.push(7);
+    s1.push(6);
+    s1.push(5);
+
+s.swap(s1);
+cout<<"After swapping stacks are :\n";
+while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+    cout<<endl;
+    while(!s1.empty())
+    {
+        cout<<s1.top()<<" ";
+        s1.pop();
+    }
+    
+     return 0;
+}
