@@ -15,35 +15,55 @@ using namespace std;
             s.push(expr[i]);
             continue;
         }
-        if(s.empty()) 
-           return false; 
-           
+        else if(s.empty()) 
+          {
+            return false; 
+          }
          else
          {
-             x=s.top();
-           if(expr[i]==x)
-           {
+            //cout<<expr[i];
+           switch(expr[i])
+           { 
+              case '}':
+              x=s.top();
                s.pop();
-             }
-             else
-             {
-               return false;
-               break;
-             }
+              if(x=='['||x=='(') 
+              return false;
+              break;
+              
+              case ']':
+              x=s.top();
+               s.pop();
+              if(x=='{'||x=='(') 
+              return false;
+              break;
+              
+              case ')':
+              x=s.top();
+               s.pop();
+              if(x=='['||x=='{') 
+              return false;
+              break;
+            
+           }
+            
          }
            
    }
-     return (s.empty());
+     if(s.empty())
+     return true;
        
    }
 int main()
 {
-    string expr="{}";
-if(Parantheis_balanced(expr)==1)
+    string expr="{(})[]";
+    bool x;
+x=Parantheis_balanced(expr);
+if(x==1)
 cout<<"Balanced";
 else 
-cout<<"Not balanced";
-    
+cout<<"Not Balanced";
+   
 
      return 0;
 }
